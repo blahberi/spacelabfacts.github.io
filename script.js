@@ -7,13 +7,12 @@ function getRandomInt(min, max){
 function get_facts(){
     var result = null;
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", 'facts.fact', false);
+    xmlhttp.open("GET", 'http://localhost:8000/facts.fact', false);
     xmlhttp.send();
     if (xmlhttp.status == 200) {
         result = xmlhttp.responseText;
     }
-    console.log(result);
-    return result
+    return result.split("\n\r")
 }
 
 facts = get_facts();
