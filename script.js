@@ -12,7 +12,7 @@ function get_facts(){
     if (xmlhttp.status == 200) {
         result = xmlhttp.responseText;
     }
-    return result.split("\r\n")
+    return result.split("\r\n");
 }
 
 facts = get_facts();
