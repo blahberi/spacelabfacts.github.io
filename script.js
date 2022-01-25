@@ -19,7 +19,7 @@ facts = get_facts();
 
 file = getRandomInt(1, 8);
 fact = facts[getRandomInt(0, facts.length)];
-document.body.style.backgroundImage = "url('images/"+file.toString()+".jpg')";
+document.body.style.backgroundImage = "url('images/"+file.toString()+".jpeg')";
 
 
 document.getElementById("fact").innerHTML = fact
