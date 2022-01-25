@@ -16,7 +16,6 @@ function get_facts(){
 }
 
 facts = get_facts();
-console.log(facts);
 
 file = getRandomInt(1, 8);
 fact = facts[getRandomInt(0, facts.length)];
