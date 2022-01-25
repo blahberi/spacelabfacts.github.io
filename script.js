@@ -17,7 +17,7 @@ function get_facts(){
 
 facts = get_facts();
 
-file = getRandomInt(1, 8);
+file = getRandomInt(1, 16);
 fact = facts[getRandomInt(0, facts.length)];
 document.body.style.backgroundImage = "url('images/"+file.toString()+".jpeg')";
 
