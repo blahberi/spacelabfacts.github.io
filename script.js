@@ -3,7 +3,18 @@ function getRandomInt(min, max){
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
 }
-facts = ["בגלל היעדר כוח הכבידה בחלל, כל אדם הופך גבוה יותר בכחמישה סנטימטרים", "יום אחד על ונוס נמשך כמעט שנה על כדור הארץ","נוזל חופשי בחלל החיצון יקבל צורה כדורית","אי אפשר לגהק בחלל"]
+
+function get_facts(){
+    var result = null;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", 'facts.fact', false);
+    xmlhttp.send();
+    if (xmlhttp.status == 200) {
+        result = xmlhttp.responseText;
+    }
+    console.log(result);
+    return result
+}
 
 file = getRandomInt(1, 8);
 fact = facts[getRandomInt(0, facts.length)];
