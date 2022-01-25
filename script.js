@@ -7,7 +7,7 @@ function getRandomInt(min, max){
 function get_facts(){
     var result = null;
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", 'https://blahberi.github.io/spacelabfacts.github.io', false);
+    xmlhttp.open("GET", 'https://blahberi.github.io/spacelabfacts.github.io/facts.fact', false);
     xmlhttp.send();
     if (xmlhttp.status == 200) {
         result = xmlhttp.responseText;
