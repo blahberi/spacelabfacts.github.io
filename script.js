@@ -28,29 +28,44 @@ function get_cookie(cname){
             return c.substring(name.length, c.length)
         }
     }
+    return false;
 }
 
+function create_random_queue(min, max){
+    var queue = [];
+    for (var i = min; i <= max; i++){
+        queue.push(i);
+    }
+    queue.sort(() => Math.random() - 0.5);
+    return queue;
+}
 //get fact and background
 facts = get_facts();
-fileIndex = 0
-while (true){
-    fileIndex = getRandomInt(1, 17);
-    if (fileIndex != get_cookie("lastbackground")){
-        break;
-    }
+var fileQueue;
+var factQueue;
+if (get_cookie("factqueue") == false){
+    factQueue = create_random_queue(0, facts.length - 1);
 }
-while (true){
-    factIndex = getRandomInt(0, facts.length);
-    if (factIndex != get_cookie("lastfact")){
-        break;
-    }
+else{
+    factQueueString = get_cookie("factqueue");
+    console.log(factQueueString);
+    factQueue = factQueueString.split(' ');
+    console.log(factQueue)
 }
-fact = facts[factIndex];
+if (get_cookie("backgroundqueue") == false){
+    fileQueue = create_random_queue(1, 16);
+}
+else{
+    fileQueueString = get_cookie("backgroundqueue");
+    fileQueue = fileQueueString.split(' ');
+}
+fact = facts[factQueue.shift().toString()];
+fileIndex = fileQueue.shift();
 
 //load fact and background
-document.body.style.backgroundImage = "url('images/"+fileIndex.toString()+".jpeg')";
+document.body.style.backgroundImage = "url('images/"+fileIndex+".jpeg')";
 document.getElementById("fact").innerHTML = fact
 
 //save cookies for last fact and last background
-document.cookie = `lastfact=${factIndex}`;
-document.cookie = `lastbackground=${fileIndex}`
+document.cookie = `factqueue=${factQueue.join(' ')}`;
+document.cookie = `backgroundqueue=${fileQueue.join(' ')}`
