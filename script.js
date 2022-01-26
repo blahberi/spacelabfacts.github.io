@@ -31,8 +31,6 @@ function get_cookie(cname){
 }
 
 //get fact and background
-console.log(get_cookie("lastbackground"));
-console.log(get_cookie("lastfact"));
 facts = get_facts();
 fileIndex = 0
 while (true){
@@ -54,4 +52,5 @@ document.body.style.backgroundImage = "url('images/"+fileIndex.toString()+".jpeg
 document.getElementById("fact").innerHTML = fact
 
 //save cookies for last fact and last background
-document.cookie = `lastfact=${factIndex}; lastbackground=${fileIndex}`;
+document.cookie = `lastfact=${factIndex}`;
+document.cookie = `lastbackground=${fileIndex}`
